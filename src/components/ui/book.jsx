@@ -9,7 +9,7 @@ function Book({ title, description, cover }) {
       <div
         style={{
           height: 344,
-          width: '100%'
+          width: "100%",
         }}
       >
         <img
@@ -24,7 +24,15 @@ function Book({ title, description, cover }) {
           }}
         />
       </div>
-      <div className="card-body">
+      <div
+        className="card-body"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          overflow: "hidden",
+        }}
+      >
         <h5
           className="card-title"
           style={{
