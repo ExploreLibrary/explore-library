@@ -1,19 +1,62 @@
-function Book() {
+function Book({ title, description, cover }) {
   return (
-    <div className="card">
-      <img
-        src="https://covers.openlibrary.org/b/id/15143479-M.jpg"
-        className="card-img-top"
-        alt="..."
-      />
-      <div className="card-body">
-        <h5 className="card-title">Card title</h5>
-        <p className="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card’s content.
+    <div
+      className="card"
+      style={{
+        height: 603,
+      }}
+    >
+      <div
+        style={{
+          height: 344,
+          width: "100%",
+        }}
+      >
+        <img
+          src={`https://covers.openlibrary.org/b/id/${cover}.jpg`}
+          className="card-img-top"
+          alt="..."
+          style={{
+            display: "block",
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+        />
+      </div>
+      <div
+        className="card-body"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          overflow: "hidden",
+        }}
+      >
+        <h5
+          className="card-title"
+          style={{
+            display: "-webkit-box",
+            WebkitBoxOrient: "vertical",
+            WebkitLineClamp: "2",
+            overflow: "hidden",
+          }}
+        >
+          {title}
+        </h5>
+        <p
+          className="card-text"
+          style={{
+            display: "-webkit-box",
+            WebkitBoxOrient: "vertical",
+            WebkitLineClamp: "5",
+            overflow: "hidden",
+          }}
+        >
+          {description}
         </p>
         <a href="#" className="btn btn-primary">
-          Go somewhere
+          View book
         </a>
       </div>
     </div>
