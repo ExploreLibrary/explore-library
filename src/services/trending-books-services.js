@@ -15,3 +15,16 @@ export async function listTrendingBooks() {
   console.log(data);
   return data.docs;
 }
+
+
+export async function getBook() {
+  const { data } = await http.get("/search.json", {
+    params: {
+      q: "harry%20potter",
+      fields: "*,availability",
+      limit: 1,
+    },
+  });
+  console.log(data);
+  return data.docs;
+}

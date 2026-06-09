@@ -1,5 +1,6 @@
 import Navbar from "./components/ui/navbar.jsx";
 import Gallery from "./components/ui/gallery.jsx";
+import BooksController from "./components/books/books-controller/books-controller.jsx";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         }}
       >
         <Gallery />
+        <BooksController />
       </div>
     </>
   );
