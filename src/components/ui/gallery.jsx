@@ -12,7 +12,6 @@ function Gallery() {
         console.log(booksData);
 
         setBooks(booksData);
-        
       } catch (error) {
         console.log(error);
       }
@@ -36,9 +35,15 @@ function Gallery() {
           books.map((book) => {
             const description = book.first_sentence?.[0];
 
+            const cover = book.cover_i;
+
             return (
               <li key={book.title} style={{ flex: "0 0 calc(16.66% - 9px)" }}>
-                <Book title={book.title} description={description} />
+                <Book
+                  title={book.title}
+                  description={description}
+                  cover={cover}
+                />
               </li>
             );
           })}

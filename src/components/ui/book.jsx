@@ -1,4 +1,4 @@
-function Book({ title, description }) {
+function Book({ title, description, cover }) {
   return (
     <div
       className="card"
@@ -6,11 +6,24 @@ function Book({ title, description }) {
         height: 603,
       }}
     >
-      <img
-        src="https://covers.openlibrary.org/b/id/15143479-M.jpg"
-        className="card-img-top"
-        alt="..."
-      />
+      <div
+        style={{
+          height: 344,
+          width: '100%'
+        }}
+      >
+        <img
+          src={`https://covers.openlibrary.org/b/id/${cover}.jpg`}
+          className="card-img-top"
+          alt="..."
+          style={{
+            display: "block",
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+        />
+      </div>
       <div className="card-body">
         <h5
           className="card-title"
