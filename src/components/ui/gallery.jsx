@@ -9,11 +9,12 @@ function Gallery() {
     async function fetchBooks() {
       try {
         const booksData = await BooksService.listTrendingBooks();
-        console.log(booksData);
+
 
         setBooks(booksData);
+        console.log(booksData);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     }
     fetchBooks();
@@ -38,7 +39,7 @@ function Gallery() {
             const cover = book.cover_i;
 
             return (
-              <li key={book.title} style={{ flex: "0 0 calc(16.66% - 9px)" }}>
+              <li key={book.key} style={{ flex: "0 0 calc(16.66% - 9px)" }}>
                 <Book
                   title={book.title}
                   description={description}

@@ -11,7 +11,7 @@ function BookDetailPage({ spotGenres = ['Action', 'Drama', 'Horror'] }) {
       {spotGenres.map((genre) => (
         <div key={genre} className="mb-2">
           <h3 className="fw-light">Best of {genre}</h3>
-          <MoviesController genre={genre} limit={6} />
+          {/*<BooksController genre={genre} limit={6} />*/}
         </div>
       ))}
       

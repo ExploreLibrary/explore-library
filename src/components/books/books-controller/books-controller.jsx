@@ -10,9 +10,8 @@ function BooksController() {
     async function fetchBook() {
       try {
         const bookData = await BookService.getBook();
-        console.log("MY BOOK:", bookData);
         setBook(bookData[0]);
-        console.log("THE BOOK:", book);
+
       } catch (error) {
         console.error(error);
       }

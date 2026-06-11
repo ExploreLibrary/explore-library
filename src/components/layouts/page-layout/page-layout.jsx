@@ -6,10 +6,10 @@ const jumbrotron = {
   subtitle: 'Mundo'
 }*/
 
-function PageLayout({ children, jumbotron, className = '' }) {
+function PageLayout({ children, className = '' }) {
   return (
     <>
-      {jumbotron && (<Jumbotron {...jumbotron} />)}
+
       <div className={`container py-3 ${className}`}>
         {children}
       </div>

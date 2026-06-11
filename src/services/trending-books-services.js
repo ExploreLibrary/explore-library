@@ -12,7 +12,7 @@ export async function listTrendingBooks() {
       limit: 6,
     },
   });
-  console.log(data);
+
   return data.docs;
 }
 
@@ -25,6 +25,6 @@ export async function getBook() {
       limit: 1,
     },
   });
-  console.log(data);
+
   return data.docs;
 }
