@@ -1,11 +1,13 @@
 import Book from "./book.jsx";
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import * as BooksService from "../../services/trending-books-services.js";
 import Loader from "./loader.jsx";
+import ErrorMessage from "./errorMessage.jsx";
 
 function Gallery() {
   let [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     async function fetchBooks() {
@@ -13,6 +15,7 @@ function Gallery() {
         const booksData = await BooksService.listTrendingBooks();
         setBooks(booksData);
       } catch (error) {
+        setIsError(true);
         console.error(error);
       } finally {
         setLoading(false);
@@ -23,10 +26,15 @@ function Gallery() {
 
   return (
     <>
-      {loading ? (
-        <Loader />
-      ) : (
-        <>
+      {loading && <Loader/>}
+
+      {(!loading && isError)
+       && <ErrorMessage message="Error cargando trendingbooks"/>
+      }
+
+      {(!loading && !isError)
+        && (
+           <>
           <h2 style={{ paddingBlock: 20 }}>Libros en tendencia</h2>
           <ul
             style={{
@@ -56,7 +64,7 @@ function Gallery() {
         </>
       )}
     </>
-  );
+   )
 }
 
 export default Gallery;
