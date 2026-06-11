@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 //import MoviesList from "../movies-list/movies-list";
-import * as BookService from "../../../services/trending-books-services.js";
+import * as BookService from "../../../services/trending-books-service.js";
 import BookDetail from "../../ui/bookDetail.jsx";
 
 function BooksController() {
   const [book, setBook] = useState([]);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     async function fetchBook() {
@@ -13,7 +14,8 @@ function BooksController() {
         setBook(bookData[0]);
 
       } catch (error) {
-        console.error(error);
+        //pendiente de revisar 
+        setIsError(true);
       }
     }
 

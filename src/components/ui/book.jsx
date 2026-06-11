@@ -1,4 +1,4 @@
-function Book({ title, description, cover }) {
+function Book({ title, description, imgURL }) {
   return (
     <div
       className="card"
@@ -13,9 +13,9 @@ function Book({ title, description, cover }) {
         }}
       >
         <img
-          src={`https://covers.openlibrary.org/b/id/${cover}.jpg`}
+          src={imgURL}
           className="card-img-top"
-          alt="..."
+          alt={description}
           style={{
             display: "block",
             width: "100%",

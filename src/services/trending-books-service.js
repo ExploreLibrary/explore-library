@@ -4,14 +4,26 @@ const http = axios.create({
   baseURL: "/api-openlibrary",
 });
 
-export async function listTrendingBooks() {
+export async function listTrendingBooks(query, fields, limit) {
   const { data } = await http.get("/search.json", {
     params: {
-      q: "harry%20potter",
-      fields: "*,availability",
-      limit: 6,
+      q: query,
+      fields: fields,
+      limit: limit,
     },
   });
+
+  data.docs.map((element) => {
+    let newElement = element;
+
+    if(element.cover_i){
+      newElement.imgURL =`https://covers.openlibrary.org/b/id/${element.cover_i}.jpg`;
+    } else {
+      newElement.imgURL = "";
+    }
+    return newElement;
+
+  })
 
   return data.docs;
 }

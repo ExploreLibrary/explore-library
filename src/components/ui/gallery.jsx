@@ -1,22 +1,21 @@
 import Book from "./book.jsx";
-import { useState, useEffect, use } from "react";
-import * as BooksService from "../../services/trending-books-services.js";
+import { useState, useEffect } from "react";
+import * as BooksService from "../../services/trending-books-service.js";
 import Loader from "./loader.jsx";
 import ErrorMessage from "./errorMessage.jsx";
 
 function Gallery() {
-  let [books, setBooks] = useState([]);
+  const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     async function fetchBooks() {
       try {
-        const booksData = await BooksService.listTrendingBooks();
+        const booksData = await BooksService.listTrendingBooks('harry%20potter',"*,availability",6);
         setBooks(booksData);
       } catch (error) {
         setIsError(true);
-        console.error(error);
       } finally {
         setLoading(false);
       }
@@ -48,14 +47,13 @@ function Gallery() {
             {books &&
               books.map((book) => {
                 const description = book.first_sentence?.[0];
-                const cover = book.cover_i;
 
                 return (
                   <li key={book.key} style={{ flex: "0 0 calc(16.66% - 9px)" }}>
                     <Book
                       title={book.title}
                       description={description}
-                      cover={cover}
+                      imgURL={book.imgURL}
                     />
                   </li>
                 );
