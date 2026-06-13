@@ -1,10 +1,4 @@
-import { Jumbotron } from "../../ui/jumbotron/jumbotron";
-
-const jumbrotron = {
-  backgroundImage: '',
-  title: 'Hola',
-  subtitle: 'Mundo'
-}
+import Jumbotron from "../../ui/jumbotron/jumbotron";
 
 function PageLayout({ children, jumbotron, className = '' }) {
   return (
