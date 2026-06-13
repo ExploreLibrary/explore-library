@@ -1,15 +1,15 @@
-/*import { Jumbotron } from "../../ui";
+import { Jumbotron } from "../../ui/jumbotron/jumbotron";
 
 const jumbrotron = {
   backgroundImage: '',
   title: 'Hola',
   subtitle: 'Mundo'
-}*/
+}
 
-function PageLayout({ children, className = '' }) {
+function PageLayout({ children, jumbotron, className = '' }) {
   return (
     <>
-
+       {jumbotron && (<Jumbotron {...jumbotron} />)}
       <div className={`container py-3 ${className}`}>
         {children}
       </div>
