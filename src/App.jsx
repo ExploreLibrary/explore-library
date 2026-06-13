@@ -7,7 +7,7 @@ function App() {
     <>
       <Routes>
         <Route index element ={<HomePage/>} />
-        <Route path="/book-detail" element ={<BookDetailPage/>} />
+        <Route path="/book-detail/:isbn" element ={<BookDetailPage/>} />
       </Routes>
     </>
   );

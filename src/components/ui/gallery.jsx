@@ -53,7 +53,8 @@ function Gallery() {
                     <Book
                       title={book.title}
                       description={description}
-                      imgURL={book.imgURL}
+                        imgURL={book.imgURL}
+                        isbn={book.isbn}
                     />
                   </li>
                 );

@@ -21,6 +21,8 @@ export async function listTrendingBooks(query, fields, limit) {
     } else {
       newElement.imgURL = "";
     }
+    // attach a primary ISBN (first one) when available for linking to details
+    newElement.isbn = element.isbn && element.isbn.length > 0 ? element.isbn[0] : null;
     return newElement;
 
   })

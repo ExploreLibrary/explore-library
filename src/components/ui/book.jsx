@@ -1,4 +1,6 @@
-function Book({ title, description, imgURL }) {
+import { Link } from "react-router-dom";
+
+function Book({ title, description, imgURL, isbn }) {
   return (
     <div
       className="card"
@@ -55,9 +57,9 @@ function Book({ title, description, imgURL }) {
         >
           {description}
         </p>
-        <a href="#" className="btn btn-primary">
+        <Link to={isbn ? `/book-detail/${isbn}` : '#'} className="btn btn-primary" aria-disabled={!isbn}>
           View book
-        </a>
+        </Link>
       </div>
     </div>
   );
