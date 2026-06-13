@@ -1,4 +1,4 @@
-function BookDetail({ title, description, cover, readers }) {
+function BookDetail({ title, description, cover, numberOfPages }) {
   return (
     <div
       style={{
@@ -25,7 +25,7 @@ function BookDetail({ title, description, cover, readers }) {
 
       <p>{description}</p>
 
-      <p>Readers: {readers} </p>
+      <p>Number of Pages: {numberOfPages} </p>
     </div>
   );
 }

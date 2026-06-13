@@ -24,19 +24,28 @@ export async function listTrendingBooks(query, fields, limit) {
     return newElement;
 
   })
-
   return data.docs;
 }
 
 
-export async function getBook() {
-  const { data } = await http.get("/search.json", {
-    params: {
-      q: "harry%20potter",
-      fields: "*,availability",
-      limit: 1,
-    },
-  });
+export async function getBook(isbn) {
+  const { data } = await http.get(`/api/books`,{
+    params:{
+      bibkeys:`ISBN:${isbn}`,
+      format:"json",
+      jscmd:"details"
 
-  return data.docs;
+    }
+  } 
+
+  );
+  const receivedBookData = data[`ISBN:${isbn}`]
+  const bookData = {
+    title: receivedBookData.details.title,
+    description: receivedBookData.details.title,
+    cover: receivedBookData.details.covers[0],
+    numberOfPages: receivedBookData.details.number_of_pages
+  }
+  return bookData;
 }
+//8702113996
