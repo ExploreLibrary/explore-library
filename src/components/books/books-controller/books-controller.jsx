@@ -13,7 +13,7 @@ function BooksController() {
         const bookData = await BookService.getBook();
         setBook(bookData[0]);
 
-      } catch (error) {
+      } catch {
         //pendiente de revisar 
         setIsError(true);
       }
@@ -21,6 +21,10 @@ function BooksController() {
 
     fetchBook();
   }, [book]);
+
+  //if (isError) {
+    //return <p>Error al cargar libro</p>;
+  //}
 
   /*const handleDeleteMovie = (id) => {
     setMovies(movies.filter((movie) => movie.id !== id))
@@ -37,7 +41,12 @@ function BooksController() {
   const cover = book.cover_i;
 
   return (
+    <>
+    {isError && (<p>Error al cargar libro</p>)}
+    {!isError && 
     <BookDetail title={cleanTitle} description={description} cover={cover} readers={book.currently_reading_count}/>
+    }
+    </>
   );
 }
 

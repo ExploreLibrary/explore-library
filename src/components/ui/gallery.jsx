@@ -14,7 +14,7 @@ function Gallery() {
       try {
         const booksData = await BooksService.listTrendingBooks('harry%20potter',"*,availability",6);
         setBooks(booksData);
-      } catch (error) {
+      } catch {
         setIsError(true);
       } finally {
         setLoading(false);
