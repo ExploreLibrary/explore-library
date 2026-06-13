@@ -1,5 +1,6 @@
 import './jumbotron.css';
 
+
 function Jumbotron({ backgroundImage, title, subtitle }) {
   return (
     <div className="jumbotron" style={{ backgroundImage: `url(${backgroundImage})`}}>
