@@ -4,12 +4,15 @@ import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
 import worker from './mock';
+import { AuthContextProvider } from './contexts/auth-context.jsx'
 
 worker.start().then(() => {
   createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-      <App />
+     <AuthContextProvider>
+        <App />
+     </AuthContextProvider>
     </BrowserRouter>
   </StrictMode>,
   );
