@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const http = axios.create({
-    baseURL: "http://api.explorelibrary.mock.org",
+    baseURL: "https://api.openlibrary.mock.org",
 });
 
 export async function register(user) {
