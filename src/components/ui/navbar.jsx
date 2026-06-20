@@ -1,8 +1,10 @@
-// import { NavLink } from 'react-router';
+import { useAuth } from "../../contexts/auth-context";
+import { Link } from "react-router-dom";
 
 function Navbar() {
+   const { user, logout } = useAuth();
   return (
-    <div style={{ backgroundColor: "#fbfbfb" }}>
+    <div >
       <div
         style={{
           maxWidth: 1440,
@@ -85,6 +87,18 @@ function Navbar() {
                 Search
               </button>
             </form>
+              <div>
+                 {user && (
+                  <>
+                    {user.name}
+                  </>
+                 )}
+                 {!user && (
+                  <>
+                    <Link to="/login">Login</Link>
+                  </>
+                 )}
+              </div>
           </div>
         </nav>
       </div>

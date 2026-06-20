@@ -16,8 +16,6 @@ function LoginForm() {
             login(user);
             navigate('/');
         } catch (error) {
-            console.error(error);
-            console.error(error.response?.data);
             if (error.response?.status === 401) {
                 Object.keys(error.response.data.errors)
                  .forEach((inputName) => {

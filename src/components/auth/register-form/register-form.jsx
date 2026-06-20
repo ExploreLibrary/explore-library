@@ -12,8 +12,6 @@ function RegisterForm() {
       await AuthService.register(user);
       navigate('/login');
     } catch (error) {
-      console.error(error);
-      console.error(error.response?.data);
       if (error.response?.status === 400) {
         Object.keys(error.response.data.errors)
           .forEach((inputName) => {

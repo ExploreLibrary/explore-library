@@ -11,7 +11,7 @@ const users = self.localStorage.getItem(LS_USERS_KEY) ?
 
 const handleUserRegister = http.post(`${baseMockDomain}/users`, async (data) => {
   const user = await data.request.json();
-  console.log('mock user received', user);
+
 
   const isAlreadyRegistered = users.some((registeredUser) => registeredUser.username === user.username);
   if (isAlreadyRegistered) {
