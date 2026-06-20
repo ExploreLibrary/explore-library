@@ -5,8 +5,12 @@ function HomePage() {
   return (
     <PageLayout
     >
-      <Gallery/>
-      
+      <Gallery subject="science_fiction" title="Ciencia Ficcion"/>
+      <Gallery subject="horror" title="Terror"/>
+      <Gallery subject="humor" title="Comedia"/>
+      <Gallery subject="thriller" title="Suspenso"/>
+      <Gallery subject="poetry" title="Poesia"/>
+      <Gallery subject="fantasy" title="Fantasia"/>
     </PageLayout>
   );
 }

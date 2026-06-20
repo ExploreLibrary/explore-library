@@ -10,6 +10,7 @@ export async function listTrendingBooks(query, fields, limit) {
       q: query,
       fields: fields,
       limit: limit,
+      
     },
   });
 

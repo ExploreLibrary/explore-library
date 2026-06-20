@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
    const { user, logout } = useAuth();
-  return (
+    
+   return (
     <div >
       <div
         style={{
@@ -91,6 +92,9 @@ function Navbar() {
                  {user && (
                   <>
                     {user.name}
+                    <button 
+                      className="nav-link btn btn-link" onClick={() => logout()}><i className="fa fa-sign-out"></i>
+                    </button>
                   </>
                  )}
                  {!user && (

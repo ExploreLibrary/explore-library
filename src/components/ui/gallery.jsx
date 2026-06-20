@@ -4,7 +4,7 @@ import * as BooksService from "../../services/trending-books-service.js";
 import Loader from "./loader.jsx";
 import ErrorMessage from "./errorMessage.jsx";
 
-function Gallery() {
+function Gallery({ subject, title }) {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -12,7 +12,12 @@ function Gallery() {
   useEffect(() => {
     async function fetchBooks() {
       try {
-        const booksData = await BooksService.listTrendingBooks('harry%20potter',"*,availability",6);
+        const booksData = await BooksService.listTrendingBooks(
+          `subject:${subject}`,
+          "title,author_name,cover_i,isbn,first_sentence,key",
+          6,
+        );
+
         setBooks(booksData);
       } catch {
         setIsError(true);
@@ -21,7 +26,7 @@ function Gallery() {
       }
     }
     fetchBooks();
-  }, []);
+  }, [subject]);
 
   return (
     <>
@@ -34,7 +39,7 @@ function Gallery() {
       {(!loading && !isError)
         && (
            <>
-          <h2 style={{ paddingBlock: 20 }}>Libros en tendencia</h2>
+          <h2 style={{ paddingBlock: 20 }}>{title}</h2>
           <ul
             style={{
               display: "flex",
