@@ -63,10 +63,11 @@ export async function getBook(isbn) {
   return bookData;
 }
 //8702113996
-export async function searchBooks(query, limit) {
+export async function searchBooks(query, fields, limit) {
    const { data } = await http.get("/search.json", {
     params: {
       q: query,
+      fields: fields,
       limit: limit,
 
     },
@@ -74,7 +75,8 @@ export async function searchBooks(query, limit) {
 
   data.docs.map((element) => {
     let newElement = element;
-
+    console.log("bookInfo");
+    console.log(element);
     if(element.cover_i){
       newElement.imgURL =`https://covers.openlibrary.org/b/id/${element.cover_i}.jpg`;
     } else {

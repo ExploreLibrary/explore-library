@@ -4,6 +4,7 @@ import * as BooksService from "../services/books-service.js";
 import Loader from "../components/ui/loader/loader";
 import ErrorMessage from "../components/ui/errorMessage/errorMessage";
 import { useParams } from "react-router-dom";
+import PageLayout from "../components/layouts/page-layout/page-layout.jsx";
 
 
 function SearchResultsPage() {
@@ -16,7 +17,8 @@ function SearchResultsPage() {
     async function fetchBooks() {
       try {
         const booksData = await BooksService.searchBooks(
-          `query:${query}`,
+          query,
+          "title,author_name,cover_i,isbn,first_sentence,key",
           18,
         );
 
@@ -41,6 +43,7 @@ function SearchResultsPage() {
       {(!loading && !isError)
         && (
            <>
+           <PageLayout>
           <ul
             style={{
               display: "flex",
@@ -66,6 +69,7 @@ function SearchResultsPage() {
                 );
               })}
           </ul>
+          </PageLayout>
         </>
       )}
     </>
