@@ -1,7 +1,7 @@
 import Book from "../book/book";
 import { useState, useEffect } from "react";
 import * as BooksService from "../../../services/trending-books-service.js";
-import Loader from "../loader.jsx";
+import Loader from "../loader/loader.jsx";
 import ErrorMessage from "../errorMessage.jsx";
 import "./gallery.css";
 

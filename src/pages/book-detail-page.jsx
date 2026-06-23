@@ -3,7 +3,7 @@ import BookDetail from "../components/ui/bookDetail";
 import ErrorMessage from "../components/ui/errorMessage.jsx";
 import * as BooksService from "../services/trending-books-service.js";
 import { useEffect, useState } from "react";
-import Loader from "../components/ui/loader.jsx";
+import Loader from "../components/ui/loader/loader.jsx";
 import { useParams } from "react-router-dom";
 
 function BookDetailPage() {
