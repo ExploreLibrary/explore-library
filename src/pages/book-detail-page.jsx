@@ -1,5 +1,5 @@
 import PageLayout from "../components/layouts/page-layout/page-layout";
-import BookDetail from "../components/ui/bookDetail";
+import BookDetail from "../components/ui/bookDetail/bookDetail.jsx";
 import ErrorMessage from "../components/ui/errorMessage.jsx";
 import * as BooksService from "../services/trending-books-service.js";
 import { useEffect, useState } from "react";
