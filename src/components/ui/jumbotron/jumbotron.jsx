@@ -5,8 +5,8 @@ function Jumbotron({ backgroundImage, title, subtitle }) {
   return (
     <div className="jumbotron" style={{ backgroundImage: `url(${backgroundImage})`}}>
       <div>
-        {title && (<h2>{title}</h2>)}
-        {subtitle && (<h5>{subtitle}</h5>)}
+        {title && (<h2 className="jumbotron__title">{title}</h2>)}
+        {subtitle && (<h5 className="jumbotron__subtitle">{subtitle}</h5>)}
       </div>
     </div>
   )

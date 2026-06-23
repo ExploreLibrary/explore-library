@@ -10,7 +10,7 @@ function PageLayout({ children }) {
       </div>
 
       <div className="container">
-        <Jumbotron backgroundImage={JumbotronImage} />
+        <Jumbotron backgroundImage={JumbotronImage} title="Explore Library" subtitle="Discover your favourite books!" />
       </div>
 
       <div className="container u-mb-30">{children}</div>
