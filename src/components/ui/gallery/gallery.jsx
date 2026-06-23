@@ -1,8 +1,9 @@
-import Book from "./book.jsx";
+import Book from "../book/book";
 import { useState, useEffect } from "react";
-import * as BooksService from "../../services/trending-books-service.js";
-import Loader from "./loader.jsx";
-import ErrorMessage from "./errorMessage.jsx";
+import * as BooksService from "../../../services/trending-books-service.js";
+import Loader from "../loader.jsx";
+import ErrorMessage from "../errorMessage.jsx";
+import "./gallery.css";
 
 function Gallery({ subject, title }) {
   const [books, setBooks] = useState([]);
@@ -30,45 +31,36 @@ function Gallery({ subject, title }) {
 
   return (
     <>
-      {loading && <Loader/>}
+      {loading && <Loader />}
 
-      {(!loading && isError)
-       && <ErrorMessage message="Error cargando trendingbooks"/>
-      }
+      {!loading && isError && (
+        <ErrorMessage message="Error cargando trendingbooks" />
+      )}
 
-      {(!loading && !isError)
-        && (
-           <>
-          <h2 style={{ paddingBlock: 20 }}>{title}</h2>
-          <ul
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: 10,
-              listStyleType: "none",
-              padding: 0,
-            }}
-          >
+      {!loading && !isError && (
+        <div className="gallery">
+          <h2 className="gallery__title">{title}</h2>
+          <ul className="gallery__list">
             {books &&
               books.map((book) => {
                 const description = book.first_sentence?.[0];
 
                 return (
-                  <li key={book.key} style={{ flex: "0 0 calc(16.66% - 9px)" }}>
+                  <li key={book.key} className="gallery__item">
                     <Book
                       title={book.title}
                       description={description}
-                        imgURL={book.imgURL}
-                        isbn={book.isbn}
+                      imgURL={book.imgURL}
+                      isbn={book.isbn}
                     />
                   </li>
                 );
               })}
           </ul>
-        </>
+        </div>
       )}
     </>
-   )
+  );
 }
 
 export default Gallery;

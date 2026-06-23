@@ -1,18 +1,21 @@
 import Jumbotron from "../../ui/jumbotron/jumbotron";
 import JumbotronImage from "../../../assets/images/backgrounds/library-pic.jpg";
-import Navbar from "../../ui/navbar";
+import Navbar from "../../ui/navbar/navbar";
 
 function PageLayout({ children }) {
   return (
     <>
-      <Navbar />
-      <Jumbotron backgroundImage={JumbotronImage}/>
-      
-      <div className={`container py-3`}>
-        {children}
+      <div className="container u-mb-30">
+        <Navbar />
       </div>
+
+      <div className="container">
+        <Jumbotron backgroundImage={JumbotronImage} />
+      </div>
+
+      <div className="container u-mb-30">{children}</div>
     </>
-  )
+  );
 }
 
 export default PageLayout;

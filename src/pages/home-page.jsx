@@ -1,5 +1,5 @@
 import PageLayout from "../components/layouts/page-layout/page-layout";
-import Gallery from "../components/ui/gallery";
+import Gallery from "../components/ui/gallery/gallery";
 
 function HomePage() {
   return (

@@ -1,0 +1,55 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 25px;
+    height: 60px;
+    align-items: center;
+    background: #0d054f;
+}
+
+.navbar__menu-list {
+    list-style-type: none;
+}
+
+.navbar__menu-link {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.navbar__form {
+    display: flex;
+    gap: 10px;
+}
+
+.navbar__form-input {
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+}
+
+.navbar__form-submit {
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+}
+
+.navbar__login {
+    display: flex;
+    gap: 10px;
+}
+
+.navbar__login-username {
+    color: #ffffff;
+}
+
+.navbar__login-logout {
+    color: #fff;
+}
+
+.navbar__login-logout-btn {
+    color: #209bfe;
+    background: none;
+    border: none;
+}
