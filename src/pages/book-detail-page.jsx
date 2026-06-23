@@ -41,6 +41,8 @@ function BookDetailPage() {
         description={book.description}
         cover={book.cover}
         numberOfPages={book.numberOfPages}
+        authors={book.authors}
+        publishDate={book.publishDate}
         />
       }
       

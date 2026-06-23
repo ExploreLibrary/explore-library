@@ -10,7 +10,7 @@ export async function listTrendingBooks(query, fields, limit) {
       q: query,
       fields: fields,
       limit: limit,
-      
+
     },
   });
 
@@ -32,23 +32,34 @@ export async function listTrendingBooks(query, fields, limit) {
 
 
 export async function getBook(isbn) {
-  const { data } = await http.get(`/api/books`,{
-    params:{
-      bibkeys:`ISBN:${isbn}`,
-      format:"json",
-      jscmd:"details"
+  const { data } = await http.get('/api/books', {
+    params: {
+      bibkeys: `ISBN:${isbn}`,
+      format: 'json',
+      jscmd: 'details',
+    },
+  });
 
-    }
-  } 
+  const receivedBookData = data?.[`ISBN:${isbn}`];
 
-  );
-  const receivedBookData = data[`ISBN:${isbn}`]
-  const bookData = {
-    title: receivedBookData.details.title,
-    description: receivedBookData.details.title,
-    cover: receivedBookData.details.covers[0],
-    numberOfPages: receivedBookData.details.number_of_pages
+  if (!receivedBookData?.details) {
+    throw new Error('Book not found');
   }
+
+  const details = receivedBookData.details;
+  const authors = details.authors?.map((author) => author.name).join(', ') || 'Autor no disponible';
+  const publishers = details.publishers?.join(', ') || 'Editorial no disponible';
+  const publishDate = details.publish_date || 'Fecha no disponible';
+
+  const bookData = {
+    title: details.title || 'Sin título',
+    description: `Autor(es): ${authors}. Editorial: ${publishers}. Publicado: ${publishDate}.`,
+    cover: details.covers?.[0] ?? null,
+    numberOfPages: details.number_of_pages ?? null,
+    authors,
+    publishDate,
+  };
+
   return bookData;
 }
 //8702113996

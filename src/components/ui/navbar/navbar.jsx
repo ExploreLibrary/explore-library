@@ -8,10 +8,10 @@ function Navbar() {
 
   return (
     <div className="navbar">
-      <nav class="navbar__menu">
-        <ul class="navbar__menu-list">
+      <nav className="navbar__menu">
+        <ul className="navbar__menu-list">
           <li>
-            <Link to="/" class="navbar__menu-link">
+            <Link to="/" className="navbar__menu-link">
               Home
             </Link>
           </li>
