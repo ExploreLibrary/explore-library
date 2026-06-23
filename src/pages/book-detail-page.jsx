@@ -1,7 +1,7 @@
 import PageLayout from "../components/layouts/page-layout/page-layout";
 import BookDetail from "../components/ui/bookDetail/bookDetail.jsx";
-import ErrorMessage from "../components/ui/errorMessage.jsx";
-import * as BooksService from "../services/trending-books-service.js";
+import ErrorMessage from "../components/ui/errorMessage/errorMessage.jsx";
+import * as BooksService from "../services/books-service.js";
 import { useEffect, useState } from "react";
 import Loader from "../components/ui/loader/loader.jsx";
 import { useParams } from "react-router-dom";

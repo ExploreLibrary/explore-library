@@ -63,3 +63,27 @@ export async function getBook(isbn) {
   return bookData;
 }
 //8702113996
+export async function searchBooks(query, limit) {
+   const { data } = await http.get("/search.json", {
+    params: {
+      q: query,
+      limit: limit,
+
+    },
+  });
+
+  data.docs.map((element) => {
+    let newElement = element;
+
+    if(element.cover_i){
+      newElement.imgURL =`https://covers.openlibrary.org/b/id/${element.cover_i}.jpg`;
+    } else {
+      newElement.imgURL = "";
+    }
+    // attach a primary ISBN (first one) when available for linking to details
+    newElement.isbn = element.isbn && element.isbn.length > 0 ? element.isbn[0] : null;
+    return newElement;
+
+  })
+  return data.docs;
+}

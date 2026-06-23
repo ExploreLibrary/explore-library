@@ -4,6 +4,8 @@ import BookDetailPage from "./pages/book-detail-page.jsx";
 import PrivateRoute from "./guards/private-route.jsx";
 import LoginPage from "./pages/login-page.jsx";
 import RegisterPage from "./pages/register-page.jsx";
+import SearchResultsPage from "./pages/search-results-page.jsx";
+
 
 function App() {
   return (
@@ -16,6 +18,10 @@ function App() {
         {<PrivateRoute> 
              <BookDetailPage/>
           </PrivateRoute>} />
+          <Route path="/search/:query" element = {
+            <SearchResultsPage/>
+          }
+          />
       </Routes>
     </>
   );

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 //import MoviesList from "../movies-list/movies-list";
-import * as BookService from "../../../services/trending-books-service.js";
+import * as BookService from "../../../services/books-service.js";
 import BookDetail from "../../ui/bookDetail/bookDetail.jsx";
 
 function BooksController() {
