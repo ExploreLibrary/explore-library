@@ -34,21 +34,25 @@ function SearchResultsPage() {
 
   return (
     <>
-      {loading && <Loader/>}
+    <PageLayout>
+      <h2 className="u-mt-25">Book results including "{query}"</h2>
+      
+        {loading && <Loader/>}
 
-      {(!loading && isError)
-       && <ErrorMessage message="Error cargando libros"/>
-      }
+        {(!loading && isError)
+        && <ErrorMessage message="Error cargando libros"/>
+        }
 
-      {(!loading && !isError)
-        && (
-           <>
-           <PageLayout>
-           <h2 className="u-mt-25">Books results including "{query}"</h2>
-            <BooksGrid books={books} />
-          </PageLayout>
-        </>
-      )}
+        {(!loading && !isError)
+          && (
+            <>
+            
+              <BooksGrid books={books} />
+            
+          </>
+        )}
+
+      </PageLayout>
     </>
    )
 }
