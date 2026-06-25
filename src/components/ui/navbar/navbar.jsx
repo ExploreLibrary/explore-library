@@ -7,11 +7,9 @@ import "./navbar.css";
 function Navbar() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
-  
+
   const handleSearchButtonClick = function(){
     const searchWords = document.getElementById("search-words-input")?.value
-    console.log("searchWords");
-    console.log(searchWords);
     navigate(`/search/${searchWords}`); //cuando se clica obtener el valor de input y navegamos a la pagina /search/"valor de input"
   }
 

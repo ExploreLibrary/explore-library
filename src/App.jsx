@@ -5,6 +5,7 @@ import PrivateRoute from "./guards/private-route.jsx";
 import LoginPage from "./pages/login-page.jsx";
 import RegisterPage from "./pages/register-page.jsx";
 import SearchResultsPage from "./pages/search-results-page.jsx";
+import UserProfilePage from "./pages/user-profile-page.jsx";
 
 
 function App() {
@@ -13,15 +14,10 @@ function App() {
       <Routes>
         <Route index element ={<HomePage/>} />
         <Route path="/login" element ={<LoginPage/>} />
-         <Route path="/register" element ={<RegisterPage/>} />
-        <Route path="/book-detail/:isbn" element =
-        {<PrivateRoute> 
-             <BookDetailPage/>
-          </PrivateRoute>} />
-          <Route path="/search/:query" element = {
-            <SearchResultsPage/>
-          }
-          />
+        <Route path="/register" element ={<RegisterPage/>} />
+        <Route path="/profile" element={ <PrivateRoute> <UserProfilePage/> </PrivateRoute>} />
+        <Route path="/book-detail/:isbn" element = {<BookDetailPage/>} />
+        <Route path="/search/:query" element = {<SearchResultsPage/>} />
       </Routes>
     </>
   );
