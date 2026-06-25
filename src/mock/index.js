@@ -13,13 +13,13 @@ const handleUserRegister = http.post(`${baseMockDomain}/users`, async (data) => 
   const user = await data.request.json();
 
 
-  const isAlreadyRegistered = users.some((registeredUser) => registeredUser.username === user.username);
+  const isAlreadyRegistered = users.some((registeredUser) => registeredUser.email === user.email);
   if (isAlreadyRegistered) {
     return HttpResponse.json(
       {
         message: 'Invalid user register',
         errors: {
-          username: 'Username already registered'
+          email: 'Email already registered'
         }
       },
       { status: 400 }
@@ -33,10 +33,10 @@ const handleUserRegister = http.post(`${baseMockDomain}/users`, async (data) => 
 });
 
 const handleLogin = http.post(`${baseMockDomain}/sessions`, async (data) => {
-  const { username, password } = await data.request.json();
+  const { email, password } = await data.request.json();
 
   const user = users.find((registeredUser) => 
-    registeredUser.username === username && registeredUser.password === password
+    registeredUser.email === email && registeredUser.password === password
   );
 
   if (!user) {
@@ -44,7 +44,7 @@ const handleLogin = http.post(`${baseMockDomain}/sessions`, async (data) => {
       {
         message: 'Unauthorized',
         errors: {
-          password: 'Invalid username or password'
+          password: 'Invalid email or password'
         }
       },
       { status: 401 }

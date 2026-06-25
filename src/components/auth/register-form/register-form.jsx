@@ -41,7 +41,7 @@ function RegisterForm() {
             type="text"
             {...register("name", { required: "User name is required" })}
             className={`register-form__input ${errors.name ? "is-invalid" : ""}`}
-            placeholder="Name"
+            placeholder="Full Name"
           />
           {errors.name && (
             <div className="invalid-feedback">{errors.name.message}</div>
@@ -59,21 +59,6 @@ function RegisterForm() {
           {errors.email && (
             <div className="register-form__invalid-feedback">
               {errors.email.message}
-            </div>
-          )}
-        </div>
-
-        {/* USERNAME */}
-        <div className="register-form__input-group">
-          <input
-            type="text"
-            {...register("username", { required: "User username is required" })}
-            className={`register-form__input ${errors.username ? "is-invalid" : ""}`}
-            placeholder="username"
-          />
-          {errors.username && (
-            <div className="register-form__invalid-feedback">
-              {errors.username.message}
             </div>
           )}
         </div>

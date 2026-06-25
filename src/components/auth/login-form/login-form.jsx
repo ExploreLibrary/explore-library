@@ -29,10 +29,10 @@ function LoginForm() {
       <div className="login-form__cnt u-mt-30">
       <h2 className="u-mb-25">Login</h2>
         <form className="login-form" onSubmit={handleSubmit(handleUserLogin)}>
-          {/* USERNAME */}
+          {/* EMAIL */}
           <div className="login-form__input-group">
-            <input type="text" {...register('username', { required: 'User username is required' })} className={`login-form__input ${errors.username ? 'is-invalid' : ''}`} placeholder="username" />
-            {errors.username && (<div className="login-form__invalid-feedback">{errors.username.message}</div>)}
+            <input type="text" {...register('email', { required: 'User email is required' })} className={`login-form__input ${errors.email ? 'is-invalid' : ''}`} placeholder="Email" />
+            {errors.email && (<div className="login-form__invalid-feedback">{errors.email.message}</div>)}
           </div>
 
           {/* PASSWORD */}
