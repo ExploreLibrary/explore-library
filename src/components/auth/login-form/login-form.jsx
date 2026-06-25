@@ -27,6 +27,7 @@ function LoginForm() {
     }
     return(
       <div className="login-form__cnt u-mt-30">
+      <h2 className="u-mb-25">Login</h2>
         <form className="login-form" onSubmit={handleSubmit(handleUserLogin)}>
           {/* USERNAME */}
           <div className="login-form__input-group">
