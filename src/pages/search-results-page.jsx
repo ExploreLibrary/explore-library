@@ -37,7 +37,7 @@ function SearchResultsPage() {
       {loading && <Loader/>}
 
       {(!loading && isError)
-       && <ErrorMessage message="Error cargando trendingbooks"/>
+       && <ErrorMessage message="Error cargando libros"/>
       }
 
       {(!loading && !isError)

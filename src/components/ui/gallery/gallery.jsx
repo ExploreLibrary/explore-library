@@ -13,7 +13,7 @@ function Gallery({ subject, title }) {
   useEffect(() => {
     async function fetchBooks() {
       try {
-        const booksData = await BooksService.listTrendingBooks(
+        const booksData = await BooksService.listBooks(
           `subject:${subject}`,
           "title,author_name,cover_i,isbn,first_sentence,key",
           6,
@@ -34,7 +34,7 @@ function Gallery({ subject, title }) {
       {loading && <Loader />}
 
       {!loading && isError && (
-        <ErrorMessage message="Error cargando trendingbooks" />
+        <ErrorMessage message="Error cargando libros" />
       )}
 
       {!loading && !isError && (
