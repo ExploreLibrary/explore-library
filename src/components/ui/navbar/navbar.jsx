@@ -1,10 +1,19 @@
 import { useAuth } from "../../../contexts/auth-context";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 import "./navbar.css";
 
 function Navbar() {
   const { user, logout } = useAuth();
+  const navigate = useNavigate();
+  
+  const handleSearchButtonClick = function(){
+    const searchWords = document.getElementById("search-words-input")?.value
+    console.log("searchWords");
+    console.log(searchWords);
+    navigate(`/search/${searchWords}`); //cuando se clica obtener el valor de input y navegamos a la pagina /search/"valor de input"
+  }
 
   return (
     <div className="navbar">
@@ -21,11 +30,12 @@ function Navbar() {
       <form className="navbar__form">
         <input
           className="navbar__form-input"
+          id="search-words-input"
           type="search"
           placeholder="Search"
           aria-label="Search"
         />
-        <button className="navbar__form-submit" type="submit">
+        <button className="navbar__form-submit" type="button" onClick={handleSearchButtonClick}>
           Search
         </button>
       </form>
