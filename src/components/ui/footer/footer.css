@@ -1,0 +1,11 @@
+.footer {
+    height: 60px;
+    background: #0d054f;
+    display: flex;
+    align-items: center;
+    padding-inline: 25px;
+}
+
+.footer__text {
+    color: #ffffff;
+}

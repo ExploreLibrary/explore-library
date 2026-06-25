@@ -1,0 +1,51 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: Roboto, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Gentium Book Plus', serif;
+}
+
+input, button, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.container {
+    padding-inline: 30px;
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+}
+
+.u-mt-20 {
+    margin-top: 20px;
+}
+
+.u-mt-25 {
+    margin-top: 25px;
+}
+
+.u-mt-30 {
+    margin-top: 30px;
+}
+
+.u-mb-20 {
+    margin-bottom: 20px;
+}
+
+.u-mb-25 {
+    margin-bottom: 25px;
+}
+
+.u-mb-30 {
+    margin-bottom: 30px;
+}
+
