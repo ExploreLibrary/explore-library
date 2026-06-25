@@ -27,3 +27,9 @@
     padding-block: 100px;
 
 }
+
+.book-detail__info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

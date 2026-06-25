@@ -16,6 +16,10 @@
     text-decoration: none;
 }
 
+.navbar__menu-link:hover {
+    text-decoration: underline;
+}
+
 .navbar__form {
     display: flex;
     gap: 10px;
@@ -33,6 +37,7 @@
     border-radius: 10px;
     border: none;
     padding: 10px;
+    cursor: pointer;
 }
 
 .navbar__login {
@@ -53,9 +58,19 @@
     background: none;
     border: none;
     text-decoration: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.navbar__login-logout-btn:hover {
+    text-decoration: underline;
 }
 
 .navbar__login-login-link {
     color: #ffffff;
     text-decoration: none;
+}
+
+.navbar__login-login-link:hover {
+    text-decoration: underline;
 }

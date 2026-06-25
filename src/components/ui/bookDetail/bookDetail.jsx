@@ -17,12 +17,11 @@ function BookDetail({ title, description, cover, numberOfPages, authors, publish
       ) : (
         <p className='book-detail__img-missing'>Portada no disponible</p>
       )}
-
-      <p>{description}</p>
-
-      {authors ? <p><strong>Autor(es):</strong> {authors}</p> : null}
-      {publishDate ? <p><strong>Publicado:</strong> {publishDate}</p> : null}
-      {numberOfPages ? <p>Number of Pages: {numberOfPages}</p> : null}
+        <div className='book-detail__info u-mt-20'>
+          {authors ? <p><strong>Autor(es):</strong> {authors}</p> : null}
+          {publishDate ? <p><strong>Publicado:</strong> {publishDate}</p> : null}
+          {numberOfPages ? <p>Number of Pages: {numberOfPages}</p> : null}
+      </div>
     </div>
   );
 }
