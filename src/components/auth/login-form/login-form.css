@@ -10,6 +10,7 @@
     padding: 8px 12px;
     border-radius: 4px;
     border: 1px solid #222;
+    min-width: 220px;
 }
 
 .login-form__invalid-feedback {

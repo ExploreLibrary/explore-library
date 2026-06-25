@@ -31,13 +31,13 @@ function LoginForm() {
         <form className="login-form" onSubmit={handleSubmit(handleUserLogin)}>
           {/* EMAIL */}
           <div className="login-form__input-group">
-            <input type="text" {...register('email', { required: 'User email is required' })} className={`login-form__input ${errors.email ? 'is-invalid' : ''}`} placeholder="Email" />
+            <input type="text" {...register('email', { required: 'User email is required' })} className={`login-form__input ${errors.email ? 'is-invalid' : ''}`} placeholder="Email user@example.com" />
             {errors.email && (<div className="login-form__invalid-feedback">{errors.email.message}</div>)}
           </div>
 
           {/* PASSWORD */}
           <div className="login-form__input-group">
-            <input type="password" {...register('password', { required: 'User password is required' })} className={`login-form__input ${errors.password ? 'is-invalid' : ''}`} placeholder="***********" />
+            <input type="password" {...register('password', { required: 'User password is required' })} className={`login-form__input ${errors.password ? 'is-invalid' : ''}`} placeholder="Password" />
             {errors.password && (<div className="login-form__invalid-feedback">{errors.password.message}</div>)}
           </div>
 

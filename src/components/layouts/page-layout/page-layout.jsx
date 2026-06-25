@@ -1,6 +1,7 @@
 import Jumbotron from "../../ui/jumbotron/jumbotron";
 import JumbotronImage from "../../../assets/images/backgrounds/library-pic.jpg";
 import Navbar from "../../ui/navbar/navbar";
+import Footer from "../../ui/footer/footer";
 
 function PageLayout({ children }) {
   return (
@@ -14,6 +15,10 @@ function PageLayout({ children }) {
       </div>
 
       <div className="container u-mb-30">{children}</div>
+
+      <div className="container">
+        <Footer />
+      </div>
     </>
   );
 }

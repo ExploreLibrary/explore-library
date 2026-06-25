@@ -54,7 +54,7 @@ function RegisterForm() {
             type="email"
             {...register("email", { required: "User email is required" })}
             className={`register-form__input ${errors.email ? "is-invalid" : ""}`}
-            placeholder="user@example.org"
+            placeholder="Email user@example.com"
           />
           {errors.email && (
             <div className="register-form__invalid-feedback">
@@ -69,7 +69,7 @@ function RegisterForm() {
             type="password"
             {...register("password", { required: "User password is required" })}
             className={`register-form__input ${errors.password ? "is-invalid" : ""}`}
-            placeholder="***********"
+            placeholder="Password"
           />
           {errors.password && (
             <div className="register-form__invalid-feedback">
