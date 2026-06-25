@@ -21,13 +21,17 @@ export function AuthContextProvider({ children }) {
   }
 
   const updateFavorites = (user) => {
-    self.localStorage.setItem(LS_CURRENT_USER_KEY, JSON.stringify(user));
-    setUser(user);
+    const normalizedUser = user && typeof user === 'object'
+      ? { ...user, favorites: Array.isArray(user.favorites) ? [...user.favorites] : [] }
+      : user;
+
+    self.localStorage.setItem(LS_CURRENT_USER_KEY, JSON.stringify(normalizedUser));
+    setUser(normalizedUser);
   }
 
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout, updateFavorites }}>
       {children}
     </AuthContext.Provider>
   )

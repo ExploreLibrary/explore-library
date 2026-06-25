@@ -3,24 +3,35 @@ import { Link, useSearchParams } from "react-router-dom";
 import "./book.css";
 import FavoriteIconEmpty from "../../../assets/images/favorites/estrella-vacia.png";
 import FavoriteIconFull from "../../../assets/images/favorites/estrella-rellena.png";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
 
 function Book({ title, description, imgURL, isbn }) {
   const [isFavorite, setIsFavorite] = useState(false);
 
   const { user, updateFavorites } = useAuth();
 
+  useEffect(() => {
+    if (Array.isArray(user?.favorites)) {
+      setIsFavorite(user.favorites.includes(isbn));
+    }
+  }, [user?.favorites, isbn]);
+
   const handleToggleBookFavorite = function() {
-    const favoriteBooks = user.favorites;
-      user.favorites.push(isbn);
-      console.log(user);
-      if (user?.favorites?.includes(isbn)){
-        setIsFavorite(true);
-      } else {
-        setIsFavorite(false);
-      }
-      updateFavorites(user);
+    if (!user) return;
+
+    const currentFavorites = Array.isArray(user.favorites) ? user.favorites : [];
+    const alreadyFavorite = currentFavorites.includes(isbn);
+    const nextFavorites = alreadyFavorite
+      ? currentFavorites.filter((favoriteIsbn) => favoriteIsbn !== isbn)
+      : [...currentFavorites, isbn];
+
+    const updatedUser = {
+      ...user,
+      favorites: nextFavorites
+    };
+
+    setIsFavorite(!alreadyFavorite);
+    updateFavorites(updatedUser);
   }
 
   return (
