@@ -75,8 +75,6 @@ export async function searchBooks(query, fields, limit) {
 
   data.docs.map((element) => {
     let newElement = element;
-    console.log("bookInfo");
-    console.log(element);
     if(element.cover_i){
       newElement.imgURL =`https://covers.openlibrary.org/b/id/${element.cover_i}.jpg`;
     } else {

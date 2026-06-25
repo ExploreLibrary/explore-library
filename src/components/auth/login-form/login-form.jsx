@@ -3,6 +3,7 @@ import * as AuthService from "../../../services/auth-service";
 import { useNavigate } from "react-router";
 import { useAuth } from "../../../contexts/auth-context";
 import { Link } from "react-router-dom";
+import "./login-form.css";
 
 
 function LoginForm() {
@@ -25,28 +26,30 @@ function LoginForm() {
         }
     }
     return(
-    <form onSubmit={handleSubmit(handleUserLogin)}>
-      {/* USERNAME */}
-      <div className="input-group mb-1">
-        <span className="input-group-text"><i className="fa fa-tag fa-fw"></i></span>
-        <input type="text" {...register('username', { required: 'User username is required' })} className={`form-control ${errors.username ? 'is-invalid' : ''}`} placeholder="username" />
-        {errors.username && (<div className="invalid-feedback">{errors.username.message}</div>)}
+      <div className="login-form__cnt u-mt-30">
+        <form className="login-form" onSubmit={handleSubmit(handleUserLogin)}>
+          {/* USERNAME */}
+          <div className="login-form__input-group">
+            <input type="text" {...register('username', { required: 'User username is required' })} className={`login-form__input ${errors.username ? 'is-invalid' : ''}`} placeholder="username" />
+            {errors.username && (<div className="login-form__invalid-feedback">{errors.username.message}</div>)}
+          </div>
 
-      </div>
+          {/* PASSWORD */}
+          <div className="login-form__input-group">
+            <input type="password" {...register('password', { required: 'User password is required' })} className={`login-form__input ${errors.password ? 'is-invalid' : ''}`} placeholder="***********" />
+            {errors.password && (<div className="login-form__invalid-feedback">{errors.password.message}</div>)}
+          </div>
 
-      {/* PASSWORD */}
-      <div className="input-group mb-2">
-        <span className="input-group-text"><i className="fa fa-lock fa-fw"></i></span>
-        <input type="password" {...register('password', { required: 'User password is required' })} className={`form-control ${errors.password ? 'is-invalid' : ''}`} placeholder="***********" />
-        {errors.password && (<div className="invalid-feedback">{errors.password.message}</div>)}
+          <div>
+            <button className="login-form__submit-btn" type="submit" disabled={!isValid}>Login</button>
+          </div>
+        </form>
+        <div className="u-mt-25">
+          <Link to="/register" className="login-form__register-link">
+            Register
+          </Link>
+        </div>
       </div>
-
-      <div className="d-grid gap-2">
-        <button className="btn btn-primary" type="submit" disabled={!isValid}>Login</button>
-        <hr className="m-0" />
-        <Link to="/register">Register</Link>
-      </div>
-    </form>
     )
 }
 

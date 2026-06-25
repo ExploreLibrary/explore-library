@@ -49,7 +49,13 @@
 }
 
 .navbar__login-logout-btn {
-    color: #209bfe;
+    color: #ffffff;
     background: none;
     border: none;
+    text-decoration: none;
+}
+
+.navbar__login-login-link {
+    color: #ffffff;
+    text-decoration: none;
 }
