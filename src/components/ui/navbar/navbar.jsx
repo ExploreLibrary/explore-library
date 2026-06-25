@@ -6,6 +6,7 @@ import "./navbar.css";
 
 function Navbar() {
   const { user, logout } = useAuth();
+  console.log(user);
   const navigate = useNavigate();
 
   const handleSearchButtonClick = function(){

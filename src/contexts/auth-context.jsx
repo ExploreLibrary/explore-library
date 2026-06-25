@@ -20,6 +20,11 @@ export function AuthContextProvider({ children }) {
     setUser(undefined);
   }
 
+  const updateFavorites = (user) => {
+    self.localStorage.setItem(LS_CURRENT_USER_KEY, JSON.stringify(user));
+    setUser(user);
+  }
+
 
   return (
     <AuthContext.Provider value={{ user, login, logout }}>

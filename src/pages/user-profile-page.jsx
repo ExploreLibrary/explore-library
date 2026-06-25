@@ -5,16 +5,20 @@ function UserProfilePage() {
     const { user } = useAuth();
     return(
     <PageLayout>
-        <div>
+        <h2 className="u-mt-30 u-mb-30">
+            User Info
+        </h2>
           <p>
-            userName {user.name}
+            <strong>Username: </strong> {user.name}
          </p>
         
          <p>
-            email {user.email}
+            <strong>Email: </strong> {user.email}
          </p>
+        <h2 className="u-mt-30 u-mb-30">
+            My Favorite Books
+        </h2>
 
-         </div>
     </PageLayout>
 
     )
