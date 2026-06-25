@@ -1,10 +1,10 @@
-import Book from "../components/ui/book/book";
 import { useState, useEffect } from "react";
 import * as BooksService from "../services/books-service.js";
 import Loader from "../components/ui/loader/loader";
 import ErrorMessage from "../components/ui/errorMessage/errorMessage";
 import { useParams } from "react-router-dom";
 import PageLayout from "../components/layouts/page-layout/page-layout.jsx";
+import BooksGrid from "../components/ui/booksGrid/booksGrid.jsx";
 
 
 function SearchResultsPage() {
@@ -44,31 +44,8 @@ function SearchResultsPage() {
         && (
            <>
            <PageLayout>
-          <ul
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: 10,
-              listStyleType: "none",
-              padding: 0,
-            }}
-          >
-            {books &&
-              books.map((book) => {
-                const description = book.first_sentence?.[0];
-
-                return (
-                  <li key={book.key} style={{ flex: "0 0 calc(16.66% - 9px)" }}>
-                    <Book
-                      title={book.title}
-                      description={description}
-                        imgURL={book.imgURL}
-                        isbn={book.isbn}
-                    />
-                  </li>
-                );
-              })}
-          </ul>
+           <h2 className="u-mt-25">Books results including "{query}"</h2>
+            <BooksGrid books={books} />
           </PageLayout>
         </>
       )}

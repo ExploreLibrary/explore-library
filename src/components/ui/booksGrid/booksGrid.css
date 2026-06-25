@@ -1,0 +1,12 @@
+.books-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style-type: none;
+    padding: 0;
+    margin-block: 30px;
+}
+
+.books-grid__item {
+    flex: 0 0 calc(16.66% - 9px);
+}
