@@ -4,6 +4,32 @@
     border: 1px solid rgba(0,0,0,0.2);
     border-radius: 6px;
     overflow: hidden;
+    position: relative;
+}
+
+.book__make-favorite {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background: #222;
+    border: none;
+    border-radius: 4px;
+    width: 24px;
+    height: 24px;
+}
+
+.book__make-favorite-empty {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+.book__make-favorite-full {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
 }
 
 .book__image-cnt {

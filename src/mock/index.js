@@ -26,6 +26,7 @@ const handleUserRegister = http.post(`${baseMockDomain}/users`, async (data) => 
     )
   } else {
     user.id = self.crypto.randomUUID();
+    user.favorites = [];
     users.push(user);
     self.localStorage.setItem(LS_USERS_KEY, JSON.stringify(users));
     return HttpResponse.json(user, { status: 201 });
