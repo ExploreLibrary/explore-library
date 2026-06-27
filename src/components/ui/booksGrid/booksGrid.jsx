@@ -10,9 +10,17 @@ function BooksGrid({ books = [] }) {
   return (
     <ul className="books-grid">
       {books.map((book) => {
-        const description = book.first_sentence
+        const description = book.description
+          ? book.description
+          : book.first_sentence
           ? book.first_sentence
           : "No description available";
+
+        const imgURL = book.imgURL
+          ? book.imgURL
+          : book.cover
+          ? `https://covers.openlibrary.org/b/id/${book.cover}.jpg`
+          : "";
 
         return (
           <li
@@ -22,7 +30,7 @@ function BooksGrid({ books = [] }) {
             <Book
               title={book.title}
               description={description}
-              imgURL={book.imgURL}
+              imgURL={imgURL}
               isbn={book.isbn}
             />
           </li>
