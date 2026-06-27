@@ -24,19 +24,32 @@ function UserProfilePage() {
 
 
   useEffect(() => {
-    function fetchBooks() {
-        const bookArray = [];
+    async function fetchBooks() {
+        setLoading(true);
+        setIsError(false);
+        
+        try {
+            const bookArray = [];
 
-        user.favorites?.map((favoriteISBN) => {
+            if (user?.favorites) {
+                for (const favoriteISBN of user.favorites) {
+                    const book = await getBookData(favoriteISBN);
+                    bookArray.push(book);
+                }
+            }
 
-            const book = getBookData(favoriteISBN);
-            bookArray.push(book);
-        })
-
-        setBooks(bookArray);
+            setBooks(bookArray);
+        } catch (error) {
+            setIsError(true);
+        } finally {
+            setLoading(false);
+        }
     }
-    fetchBooks();
-  }, [books]);
+    
+    if (user) {
+        fetchBooks();
+    }
+  }, [user]);
 
 
     return(
