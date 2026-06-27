@@ -13,3 +13,8 @@ export async function login(credentials) {
     const { data } = await http.post("/sessions", credentials);
     return data;
 }
+
+export async function updateUser(user) {
+    const { data } = await http.patch(`/users/${user.id}`, user);
+    return data;
+}
