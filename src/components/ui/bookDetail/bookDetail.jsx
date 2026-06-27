@@ -1,4 +1,5 @@
 import './bookDetail.css';
+import defaultCover from "../../../assets/images/cover/portada-no-disponible.jpg";
 
 function BookDetail({ title, description, cover, numberOfPages, authors, publishDate }) {
   return (
@@ -15,7 +16,14 @@ function BookDetail({ title, description, cover, numberOfPages, authors, publish
           />
         </div>
       ) : (
-        <p className='book-detail__img-missing'>Portada no disponible</p>
+        <div className='book-detail__img-cnt'>
+          <img
+            src={defaultCover}
+            width="100%"
+            height="auto"
+            className='book-detail__img'
+          />
+        </div>
       )}
         <div className='book-detail__info u-mt-20'>
           {authors ? <p><strong>Autor(es):</strong> {authors}</p> : null}

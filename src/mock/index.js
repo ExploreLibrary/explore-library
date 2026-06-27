@@ -57,9 +57,36 @@ const handleLogin = http.post(`${baseMockDomain}/sessions`, async (data) => {
   }
 })
 
+const handleUpdateUser = http.patch(`${baseMockDomain}/users/:userId`, async (data) => {
+  const url = new URL(data.request.url);
+  const pathSegments = url.pathname.split('/').filter(Boolean);
+  const userId = pathSegments[pathSegments.length - 1];
+  const updatedFields = await data.request.json();
+
+  const userIndex = users.findIndex((registeredUser) => registeredUser.id === userId);
+  if (userIndex === -1) {
+    return HttpResponse.json(
+      { message: 'User not found' },
+      { status: 404 }
+    );
+  }
+
+  users[userIndex] = {
+    ...users[userIndex],
+    ...updatedFields
+  };
+
+  self.localStorage.setItem(LS_USERS_KEY, JSON.stringify(users));
+
+  const sessionUser = { ...users[userIndex] };
+  delete sessionUser.password;
+  return HttpResponse.json(sessionUser, { status: 200 });
+})
+
 const worker = setupWorker(
   handleUserRegister,
-  handleLogin
+  handleLogin,
+  handleUpdateUser
 );
 
 export default worker;

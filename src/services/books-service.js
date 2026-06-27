@@ -52,10 +52,13 @@ export async function getBook(isbn) {
     details.publishers?.join(", ") || "Editorial no disponible";
   const publishDate = details.publish_date || "Fecha no disponible";
 
+  const coverId = details.covers?.[0] ?? null;
   const bookData = {
     title: details.title || "Sin título",
     description: `Autor(es): ${authors}. Editorial: ${publishers}. Publicado: ${publishDate}.`,
-    cover: details.covers?.[0] ?? null,
+    cover: coverId,
+    imgURL: coverId ? `https://covers.openlibrary.org/b/id/${coverId}.jpg` : "",
+    isbn,
     numberOfPages: details.number_of_pages ?? null,
     authors,
     publishDate,

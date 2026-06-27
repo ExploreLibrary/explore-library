@@ -1,4 +1,5 @@
 import { useContext, createContext, useState } from 'react';
+import * as AuthService from '../services/auth-service.js';
 
 const AuthContext = createContext();
 const LS_CURRENT_USER_KEY = 'current-user';
@@ -9,7 +10,6 @@ export function AuthContextProvider({ children }) {
       JSON.parse(self.localStorage.getItem(LS_CURRENT_USER_KEY)) :
       undefined
   );
-
   const login = (user) => {
     self.localStorage.setItem(LS_CURRENT_USER_KEY, JSON.stringify(user));
     setUser(user);
@@ -20,13 +20,19 @@ export function AuthContextProvider({ children }) {
     setUser(undefined);
   }
 
-  const updateFavorites = (user) => {
+  const updateFavorites = async (user) => {
     const normalizedUser = user && typeof user === 'object'
       ? { ...user, favorites: Array.isArray(user.favorites) ? [...user.favorites] : [] }
       : user;
 
     self.localStorage.setItem(LS_CURRENT_USER_KEY, JSON.stringify(normalizedUser));
     setUser(normalizedUser);
+
+    try {
+      await AuthService.updateUser(normalizedUser);
+    } catch (error) {
+      console.error('Error updating user favorites:', error);
+    }
   }
 
 

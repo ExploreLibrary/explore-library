@@ -41,7 +41,7 @@ function Navbar() {
       <div className="navbar__login">
         {user && (
           <>
-            <span className="navbar__login-username">{user.name}</span>
+            <span className="navbar__login-username"><Link className="navbar__login-username-link" to="/profile">{user.name}</Link></span>
             <span className="navbar__login-logout">
               {"( "}
               <button

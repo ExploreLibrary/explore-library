@@ -1,6 +1,7 @@
 import Book from "../book/book";
 import "./booksGrid.css";
 import FeedbackMessage from "../feedbackMessage/feedbackMessage.jsx";
+import defaultCover from "../../../assets/images/cover/portada-no-disponible.jpg";
 
 function BooksGrid({ books = [] }) {
   if (!books || books.length === 0) {
@@ -10,9 +11,17 @@ function BooksGrid({ books = [] }) {
   return (
     <ul className="books-grid">
       {books.map((book) => {
-        const description = book.first_sentence
+        const description = book.description
+          ? book.description
+          : book.first_sentence
           ? book.first_sentence
           : "No description available";
+
+        const imgURL = book.imgURL
+          ? book.imgURL
+          : book.cover
+          ? `https://covers.openlibrary.org/b/id/${book.cover}.jpg`
+          : defaultCover;
 
         return (
           <li
@@ -22,7 +31,7 @@ function BooksGrid({ books = [] }) {
             <Book
               title={book.title}
               description={description}
-              imgURL={book.imgURL}
+              imgURL={imgURL}
               isbn={book.isbn}
             />
           </li>
