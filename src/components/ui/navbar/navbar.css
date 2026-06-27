@@ -49,6 +49,15 @@
     color: #ffffff;
 }
 
+.navbar__login-username-link {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.navbar__login-username-link:hover {
+    text-decoration: underline;
+}
+
 .navbar__login-logout {
     color: #fff;
 }

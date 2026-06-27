@@ -36,10 +36,10 @@ function Book({ title, description, imgURL, isbn }) {
 
   return (
     <div className="book">
-      <button className="book__make-favorite" onClick={handleToggleBookFavorite}>
+      {user && (<button className="book__make-favorite" onClick={handleToggleBookFavorite}>
         {!isFavorite && (<img className="book__make-favorite-empty" src={FavoriteIconEmpty} alt="favorite star empty"/>)}
         {isFavorite && (<img className="book__make-favorite-full" src={FavoriteIconFull} alt="favorite star full"/> )}
-      </button>
+      </button>)}
       <div className="book__image-cnt">
         <img
           src={imgURL}
