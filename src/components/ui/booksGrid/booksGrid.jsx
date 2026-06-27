@@ -1,6 +1,7 @@
 import Book from "../book/book";
 import "./booksGrid.css";
 import FeedbackMessage from "../feedbackMessage/feedbackMessage.jsx";
+import defaultCover from "../../../assets/images/cover/portada-no-disponible.jpg";
 
 function BooksGrid({ books = [] }) {
   if (!books || books.length === 0) {
@@ -20,7 +21,7 @@ function BooksGrid({ books = [] }) {
           ? book.imgURL
           : book.cover
           ? `https://covers.openlibrary.org/b/id/${book.cover}.jpg`
-          : "";
+          : defaultCover;
 
         return (
           <li

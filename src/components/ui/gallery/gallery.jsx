@@ -33,10 +33,6 @@ function Gallery({ subject, title }) {
     <>
       {loading && <Loader />}
 
-      {!loading && isError && (
-        <ErrorMessage message="Error cargando libros" />
-      )}
-
       {!loading && !isError && (
         <div className="gallery">
           <h2 className="gallery__title">{title}</h2>
