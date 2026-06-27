@@ -1,41 +1,51 @@
 # Explore Library
 
-Explore Library es una aplicación para explorar libros, ver detalles y gestionar favoritos desde una interfaz sencilla.
+Explore Library es una aplicación React para explorar libros, ver detalles, buscar libros y gestionar favoritos.
 
-## Qué puedes hacer
+La aplicación usa OpenLibrary para obtener información de libros y MSW (Mock Service Worker) para simular la API de autenticación de usuarios.
 
-- Ver una lista de libros disponibles.
-- Abrir la página de detalle de cada libro.
-- Iniciar sesión o registrarte para guardar tu experiencia.
-- Marcar o desmarcar libros como favoritos.
-- Mantener tus favoritos en la sesión del navegador.
+## Características
 
-## Cómo empezar
+- Página principal con galerías de libros por temas.
+- Página de detalles de libro con datos extendidos.
+- Búsqueda de libros en `/search/:query`.
+- Registro e inicio de sesión de usuario.
+- Perfil privado en `/profile` con favoritos del usuario.
+- Favoritos persistentes en `localStorage`.
+
+## Rutas principales
+
+- `/` — Home con galerías de libros.
+- `/login` — Pantalla de login.
+- `/register` — Pantalla de registro.
+- `/profile` — Perfil privado del usuario.
+- `/book-detail/:isbn` — Detalle de un libro.
+- `/search/:query` — Resultados de búsqueda.
+
+## Cómo ejecutar
 
 1. Abre la carpeta del proyecto.
-2. Instala las dependencias con:
+2. Instala las dependencias:
    `npm install`
-3. Inicia el servidor de desarrollo con:
+3. Inicia el servidor de desarrollo:
    `npm run dev`
-4. Abre el enlace que muestre Vite en tu navegador.
+4. Abre el enlace que muestre Vite en el navegador.
 
-## Cómo navegar
+## Detalles de implementación
 
-- La pantalla principal muestra los libros en una galería.
-- Cada libro tiene un botón para activar o desactivar el favorito.
-- Desde un libro puedes ir a su página de detalle.
-- Si estás identificado, tus favoritos se guardan y se muestran al recargar.
+- `src/main.jsx` inicia MSW antes de renderizar la app.
+- `src/contexts/auth-context.jsx` guarda el usuario en `localStorage` bajo `current-user`.
+- `src/services/books-service.js` consume el proxy de Vite hacia OpenLibrary en `/api-openlibrary`.
+- `src/services/auth-service.js` llama a la API simulada en `https://api.openlibrary.mock.org`.
+- `src/mock/index.js` maneja registro, login y actualización de favoritos.
 
-## Estructura principal
+## Estructura del proyecto
 
-- `src/components`: piezas de interfaz reutilizables, como tarjetas de libros, barra de navegación y formularios.
-- `src/pages`: pantallas completas de la aplicación, como inicio, detalles, login y registro.
-- `src/contexts`: contexto de autenticación y manejo de usuario.
-- `src/services`: lugar para la lógica que consulta libros o gestiona datos.
+- `src/components` — componentes UI reutilizables.
+- `src/pages` — pantallas completas.
+- `src/contexts` — contexto de autenticación.
+- `src/services` — lógica de comunicación con APIs.
+- `src/mock` — mocking del backend de auth.
+- `vite.config.js` — proxy `/api-openlibrary` a `https://openlibrary.org`.
 
-## Qué mejorar luego
 
-- Añadir datos reales desde una API de libros.
-- Mejorar el manejo de favoritos para que se sincronice con un servidor.
-- Añadir validación en los formularios de login y registro.
-- Crear una página de perfil con resumen de favoritos.

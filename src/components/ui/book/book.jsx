@@ -1,5 +1,5 @@
 import { useAuth } from "../../../contexts/auth-context";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./book.css";
 import FavoriteIconEmpty from "../../../assets/images/favorites/estrella-vacia.png";
 import FavoriteIconFull from "../../../assets/images/favorites/estrella-rellena.png";
